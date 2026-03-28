@@ -1,109 +1,117 @@
-"""JSON schemas for case bundles and structured outputs."""
+"""Schemas for case bundles and extraction outputs.
 
-CASE_BUNDLE_SCHEMA = {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "case_bundle",
+These are the source of truth for the entire pipeline.
+If you change a schema here, update all downstream code.
+"""
+from dataclasses import dataclass, field, asdict
+from typing import Optional
+
+
+# --- Case Bundle Schema ---
+# Flat structure: one case = one customer/incident/problem chain
+
+@dataclass
+class CaseBundle:
+    """Input case bundle representing one support incident."""
+    case_id: str
+    ticket_text: str
+    email_thread: list[str] = field(default_factory=list)
+    conversation_snippet: str = ""
+    vip_tier: str = "unknown"          # "standard" | "vip" | "unknown"
+    priority: str = "unknown"          # "low" | "medium" | "high" | "critical" | "unknown"
+    handle_time_minutes: float = 0.0
+    churned_within_30d: bool = False
+    source_dataset: str = ""
+    language: str = "en"
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "CaseBundle":
+        known_fields = {f.name for f in cls.__dataclass_fields__.values()}
+        filtered = {k: v for k, v in d.items() if k in known_fields}
+        return cls(**filtered)
+
+
+# --- Extraction Output Schema ---
+# What the LLM produces for each case
+
+@dataclass
+class ExtractionOutput:
+    """Structured output from LLM extraction."""
+    root_cause_l1: str = ""
+    root_cause_l2: str = ""
+    sentiment_score: float = 0.0       # -1.0 to 1.0
+    risk_level: str = "low"            # "low" | "medium" | "high" | "critical"
+    review_required: bool = False
+    next_best_actions: list[str] = field(default_factory=list)
+    evidence_quotes: list[str] = field(default_factory=list)
+    confidence: float = 0.0           # 0.0 to 1.0
+    churn_risk: float = 0.0           # 0.0 to 1.0
+    sentiment_rationale: str = ""
+    draft_notes: str = ""
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "ExtractionOutput":
+        known_fields = {f.name for f in cls.__dataclass_fields__.values()}
+        filtered = {k: v for k, v in d.items() if k in known_fields}
+        return cls(**filtered)
+
+
+# --- JSON Schema for validation ---
+# Used by jsonschema to validate serialized dicts
+
+CASE_SCHEMA = {
     "type": "object",
-    "required": ["case_id", "inputs", "metadata", "labels"],
+    "required": ["case_id", "ticket_text"],
     "properties": {
-        "case_id": {"type": "string"},
-        "inputs": {
-            "type": "object",
-            "required": ["ticket_text"],
-            "properties": {
-                "ticket_text": {"type": "string"},
-                "conversation_snippet": {"type": "string"},
-                "email_thread": {"type": "array", "items": {"type": "string"}},
-                "resolution_notes": {"type": "string"},
-            },
-        },
-        "metadata": {
-            "type": "object",
-            "properties": {
-                "source_dataset": {"type": "string"},
-                "language": {
-                    "type": "string",
-                    "enum": ["en", "de", "zh", "mixed"],
-                },
-                "vip_tier": {
-                    "type": "string",
-                    "enum": ["standard", "vip", "unknown"],
-                },
-                "queue": {"type": "string"},
-                "priority": {
-                    "type": "string",
-                    "enum": ["low", "medium", "high", "critical", "unknown"],
-                },
-                "handle_time_minutes": {"type": "number"},
-            },
-        },
-        "labels": {
-            "type": "object",
-            "properties": {
-                "churned_within_30d": {"type": "boolean"},
-                "gold_root_cause": {"type": "string"},
-                "review_required_gold": {"type": "boolean"},
-            },
-        },
+        "case_id": {"type": "string", "minLength": 1},
+        "ticket_text": {"type": "string", "minLength": 1},
+        "email_thread": {"type": "array", "items": {"type": "string"}},
+        "conversation_snippet": {"type": "string"},
+        "vip_tier": {"type": "string", "enum": ["standard", "vip", "unknown"]},
+        "priority": {"type": "string", "enum": ["low", "medium", "high", "critical", "unknown"]},
+        "handle_time_minutes": {"type": "number", "minimum": 0},
+        "churned_within_30d": {"type": "boolean"},
+        "source_dataset": {"type": "string"},
+        "language": {"type": "string"},
     },
 }
 
-STRUCTURED_OUTPUT_SCHEMA = {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "ticket_structured_output",
+EXTRACTION_SCHEMA = {
     "type": "object",
-    "required": ["root_cause", "sentiment", "risk", "recommendation", "evidence"],
+    "required": [
+        "root_cause_l1",
+        "root_cause_l2",
+        "sentiment_score",
+        "risk_level",
+        "review_required",
+        "next_best_actions",
+        "evidence_quotes",
+    ],
     "properties": {
-        "root_cause": {
-            "type": "object",
-            "required": ["l1", "l2", "confidence"],
-            "properties": {
-                "l1": {"type": "string"},
-                "l2": {"type": "string"},
-                "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-            },
-        },
-        "sentiment": {
-            "type": "object",
-            "required": ["score", "rationale"],
-            "properties": {
-                "score": {"type": "number", "minimum": -1, "maximum": 1},
-                "rationale": {"type": "string"},
-            },
-        },
-        "risk": {
-            "type": "object",
-            "required": ["churn_risk", "severity", "review_required"],
-            "properties": {
-                "churn_risk": {"type": "number", "minimum": 0, "maximum": 1},
-                "severity": {
-                    "type": "string",
-                    "enum": ["low", "medium", "high", "critical"],
-                },
-                "review_required": {"type": "boolean"},
-            },
-        },
-        "recommendation": {
-            "type": "object",
-            "required": ["next_best_actions", "draft_notes"],
-            "properties": {
-                "next_best_actions": {
-                    "type": "array",
-                    "items": {"type": "string"},
-                },
-                "draft_notes": {"type": "string"},
-            },
-        },
-        "evidence": {
+        "root_cause_l1": {"type": "string", "minLength": 1},
+        "root_cause_l2": {"type": "string"},
+        "sentiment_score": {"type": "number", "minimum": -1, "maximum": 1},
+        "risk_level": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+        "review_required": {"type": "boolean"},
+        "next_best_actions": {
             "type": "array",
-            "items": {
-                "type": "object",
-                "required": ["field", "quote"],
-                "properties": {
-                    "field": {"type": "string"},
-                    "quote": {"type": "string"},
-                },
-            },
+            "items": {"type": "string"},
+            "minItems": 1,
         },
+        "evidence_quotes": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+        },
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "churn_risk": {"type": "number", "minimum": 0, "maximum": 1},
+        "sentiment_rationale": {"type": "string"},
+        "draft_notes": {"type": "string"},
     },
 }
