@@ -1,0 +1,12 @@
+{
+  "case_id": "case-380fd7e4",
+  "ticket_text": "I cancelled my service last month but I'm still being billed. This is unacceptable.",
+  "email_thread": [],
+  "conversation_snippet": "Thank you for reaching out. We've escalated this to our technical team.",
+  "vip_tier": "unknown",
+  "priority": "medium",
+  "handle_time_minutes": 10.6,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

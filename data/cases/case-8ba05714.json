@@ -1,0 +1,12 @@
+{
+  "case_id": "case-8ba05714",
+  "ticket_text": "Your mobile app crashes every time I try to check my usage.",
+  "email_thread": [],
+  "conversation_snippet": "Our technician will visit your location within 24-48 hours.",
+  "vip_tier": "vip",
+  "priority": "medium",
+  "handle_time_minutes": 49.7,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

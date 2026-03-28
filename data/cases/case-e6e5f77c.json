@@ -1,0 +1,12 @@
+{
+  "case_id": "case-e6e5f77c",
+  "ticket_text": "The new modem you sent doesn't support my existing setup. I need a compatible one.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 56.0,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

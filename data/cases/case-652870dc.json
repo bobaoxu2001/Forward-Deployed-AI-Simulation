@@ -1,0 +1,12 @@
+{
+  "case_id": "case-652870dc",
+  "ticket_text": "My internet has been down for 3 days. I work from home and this is critical.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 11.2,
+  "churned_within_30d": true,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

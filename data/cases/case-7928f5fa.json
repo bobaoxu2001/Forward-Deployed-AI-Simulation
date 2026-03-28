@@ -1,0 +1,12 @@
+{
+  "case_id": "case-7928f5fa",
+  "ticket_text": "I want to upgrade my plan to premium. Can you help with that?",
+  "email_thread": [],
+  "conversation_snippet": "We've updated your account as requested. Changes will take effect immediately.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 21.7,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

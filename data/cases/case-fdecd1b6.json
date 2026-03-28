@@ -1,0 +1,12 @@
+{
+  "case_id": "case-fdecd1b6",
+  "ticket_text": "Customer conversation summary: Long-term customer's bill increased $30 due to expired promo. Agent offers $20/month loyalty discount for 12 months.",
+  "email_thread": [],
+  "conversation_snippet": "Customer: My bill went up $30 this month with no explanation.\nAgent: Let me pull up your account details.\nCustomer: I've been a customer for 5 years and my rate has never changed.\nAgent: It appears your promotional discount expired last month.\nCustomer: Nobody told me it would expire. I want the discount back.\nAgent: I can offer you a loyalty discount of $20/month for the next 12 months.",
+  "vip_tier": "vip",
+  "priority": "critical",
+  "handle_time_minutes": 8.5,
+  "churned_within_30d": true,
+  "source_dataset": "samsum",
+  "language": "en"
+}

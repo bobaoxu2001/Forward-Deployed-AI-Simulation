@@ -1,0 +1,12 @@
+{
+  "case_id": "case-bf7cc420",
+  "ticket_text": "The connection keeps dropping every 30 minutes. I've already restarted the router multiple times.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "unknown",
+  "priority": "critical",
+  "handle_time_minutes": 5.3,
+  "churned_within_30d": true,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

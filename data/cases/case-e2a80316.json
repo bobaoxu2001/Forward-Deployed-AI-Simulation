@@ -1,0 +1,12 @@
+{
+  "case_id": "case-e2a80316",
+  "ticket_text": "The online chat support gave me wrong information and now my service is disrupted.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "standard",
+  "priority": "high",
+  "handle_time_minutes": 37.9,
+  "churned_within_30d": true,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

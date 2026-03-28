@@ -1,0 +1,12 @@
+{
+  "case_id": "case-6f37a2d1",
+  "ticket_text": "WiFi doesn't reach my home office. Signal is very weak upstairs.",
+  "email_thread": [],
+  "conversation_snippet": "We understand your frustration. A credit has been applied to your account.",
+  "vip_tier": "unknown",
+  "priority": "low",
+  "handle_time_minutes": 22.1,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

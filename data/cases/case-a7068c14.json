@@ -1,0 +1,12 @@
+{
+  "case_id": "case-a7068c14",
+  "ticket_text": "I was promised a promotional rate of $19.99 but my bill shows $39.99.",
+  "email_thread": [],
+  "conversation_snippet": "We understand your frustration. A credit has been applied to your account.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 17.2,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

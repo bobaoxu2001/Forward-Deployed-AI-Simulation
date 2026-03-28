@@ -1,0 +1,12 @@
+{
+  "case_id": "case-72dcecdc",
+  "ticket_text": "Customer conversation summary: Customer reports internet outage since yesterday. Agent confirms area outage and estimates 24-hour resolution.",
+  "email_thread": [],
+  "conversation_snippet": "Customer: Hi, my internet is not working.\nAgent: I'm sorry to hear that. Let me check your connection status.\nCustomer: It's been down since yesterday morning.\nAgent: I can see there's an outage in your area. Our team is working on it.\nCustomer: When will it be fixed?\nAgent: We expect it to be resolved within 24 hours.",
+  "vip_tier": "vip",
+  "priority": "high",
+  "handle_time_minutes": 80.0,
+  "churned_within_30d": false,
+  "source_dataset": "samsum",
+  "language": "en"
+}

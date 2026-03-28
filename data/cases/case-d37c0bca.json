@@ -1,0 +1,12 @@
+{
+  "case_id": "case-d37c0bca",
+  "ticket_text": "My invoice shows an incorrect amount. I should be on the $29/month plan but was charged $49.",
+  "email_thread": [],
+  "conversation_snippet": "We understand your frustration. A credit has been applied to your account.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 15.1,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

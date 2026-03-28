@@ -1,0 +1,12 @@
+{
+  "case_id": "case-e87ca77c",
+  "ticket_text": "Your automated system keeps disconnecting my calls before I can speak to anyone.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "standard",
+  "priority": "high",
+  "handle_time_minutes": 33.9,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

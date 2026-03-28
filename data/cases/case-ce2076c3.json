@@ -1,0 +1,12 @@
+{
+  "case_id": "case-ce2076c3",
+  "ticket_text": "Extremely slow speeds. I'm paying for 100Mbps but only getting 5Mbps.",
+  "email_thread": [],
+  "conversation_snippet": "Our technician will visit your location within 24-48 hours.",
+  "vip_tier": "unknown",
+  "priority": "low",
+  "handle_time_minutes": 39.5,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

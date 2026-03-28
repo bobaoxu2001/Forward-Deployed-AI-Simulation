@@ -1,0 +1,12 @@
+{
+  "case_id": "case-3a6527a5",
+  "ticket_text": "Customer conversation summary: Customer inquires about plan upgrade pricing. Agent explains $20/month premium tier difference and will send comparison email.",
+  "email_thread": [],
+  "conversation_snippet": "Customer: Can I upgrade my plan without extending my contract?\nAgent: Yes, you can upgrade anytime. Would you like to see the available options?\nCustomer: What's the price difference for the premium tier?\nAgent: The premium tier is $20 more per month and includes additional features.\nCustomer: OK, let me think about it.\nAgent: No problem. I'll send you a comparison email.",
+  "vip_tier": "unknown",
+  "priority": "high",
+  "handle_time_minutes": 34.5,
+  "churned_within_30d": false,
+  "source_dataset": "samsum",
+  "language": "en"
+}

@@ -1,0 +1,12 @@
+{
+  "case_id": "case-ce230c3e",
+  "ticket_text": "Please update my address and phone number on file.",
+  "email_thread": [],
+  "conversation_snippet": "Thank you for reaching out. We've escalated this to our technical team.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 63.7,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

@@ -1,0 +1,12 @@
+{
+  "case_id": "case-0d2ab501",
+  "ticket_text": "Customer conversation summary: Customer reports unauthorized account access with $127 in fraudulent charges. Agent locks account and initiates investigation to reverse transactions.",
+  "email_thread": [],
+  "conversation_snippet": "Customer: Someone accessed my account without permission.\nAgent: This is very concerning. Let me secure your account immediately.\nCustomer: I noticed charges I didn't make.\nAgent: I've temporarily locked your account. We'll need to verify your identity.\nCustomer: What charges were made?\nAgent: There are three unauthorized transactions totaling $127. We'll investigate and reverse them.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 45.9,
+  "churned_within_30d": false,
+  "source_dataset": "samsum",
+  "language": "en"
+}

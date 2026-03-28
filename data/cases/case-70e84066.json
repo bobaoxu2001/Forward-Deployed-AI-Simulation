@@ -1,0 +1,12 @@
+{
+  "case_id": "case-70e84066",
+  "ticket_text": "Why was I charged an early termination fee? I completed my contract period.",
+  "email_thread": [],
+  "conversation_snippet": "Thank you for reaching out. We've escalated this to our technical team.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 78.4,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

@@ -1,0 +1,12 @@
+{
+  "case_id": "case-4e9a11c7",
+  "ticket_text": "I can't log into my account. Password reset isn't working either.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "standard",
+  "priority": "low",
+  "handle_time_minutes": 73.4,
+  "churned_within_30d": true,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

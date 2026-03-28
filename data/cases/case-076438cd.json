@@ -1,0 +1,12 @@
+{
+  "case_id": "case-076438cd",
+  "ticket_text": "Battery on the provided router dies after 2 hours. Need replacement.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "unknown",
+  "priority": "critical",
+  "handle_time_minutes": 79.2,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

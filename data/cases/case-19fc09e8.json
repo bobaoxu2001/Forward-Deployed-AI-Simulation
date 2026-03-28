@@ -1,0 +1,12 @@
+{
+  "case_id": "case-19fc09e8",
+  "ticket_text": "No service in my area since the storm last week. When will it be restored?",
+  "email_thread": [],
+  "conversation_snippet": "We understand your frustration. A credit has been applied to your account.",
+  "vip_tier": "vip",
+  "priority": "low",
+  "handle_time_minutes": 58.3,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

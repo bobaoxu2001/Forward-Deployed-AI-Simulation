@@ -1,0 +1,12 @@
+{
+  "case_id": "case-ab4e35dd",
+  "ticket_text": "Customer conversation summary: Frustrated repeat caller threatens to switch providers. Agent escalates to supervisor with 2-hour callback commitment.",
+  "email_thread": [],
+  "conversation_snippet": "Customer: I'm extremely frustrated. This is the third time I'm calling about the same issue.\nAgent: I sincerely apologize. Let me review your case history.\nCustomer: Every time I call, I get a different answer. Nobody seems to know what's going on.\nAgent: I understand your frustration. I'm going to escalate this to our senior team.\nCustomer: I want this resolved today or I'm switching providers.\nAgent: I've marked this as urgent. A supervisor will call you within 2 hours.",
+  "vip_tier": "unknown",
+  "priority": "medium",
+  "handle_time_minutes": 68.0,
+  "churned_within_30d": false,
+  "source_dataset": "samsum",
+  "language": "en"
+}

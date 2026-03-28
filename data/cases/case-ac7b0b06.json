@@ -1,0 +1,12 @@
+{
+  "case_id": "case-ac7b0b06",
+  "ticket_text": "I was charged twice for my subscription this month. Please fix this immediately.",
+  "email_thread": [],
+  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "vip_tier": "standard",
+  "priority": "low",
+  "handle_time_minutes": 5.2,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

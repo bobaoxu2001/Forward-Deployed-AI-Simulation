@@ -1,0 +1,12 @@
+{
+  "case_id": "case-9c147cfc",
+  "ticket_text": "Someone made unauthorized changes to my account. I think my account was compromised.",
+  "email_thread": [],
+  "conversation_snippet": "We understand your frustration. A credit has been applied to your account.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 70.3,
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}

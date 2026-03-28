@@ -1,0 +1,12 @@
+{
+  "case_id": "case-b20a7628",
+  "ticket_text": "I'm moving to a new address next month. How do I transfer my service?",
+  "email_thread": [],
+  "conversation_snippet": "Our technician will visit your location within 24-48 hours.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 22.9,
+  "churned_within_30d": true,
+  "source_dataset": "support_tickets",
+  "language": "en"
+}
