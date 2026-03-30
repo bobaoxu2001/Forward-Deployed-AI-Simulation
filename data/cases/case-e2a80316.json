@@ -1,12 +1,12 @@
 {
   "case_id": "case-e2a80316",
-  "ticket_text": "The online chat support gave me wrong information and now my service is disrupted.",
+  "ticket_text": "[Multiple Device Connection Problems]\nDear Customer Support,\\n\\nWe are experiencing extensive connectivity problems impacting numerous devices throughout the office. The issues have been observed with headsets, printers, and workstations all at once, significantly disrupting daily activities. Our initial investigation indicates that the cause may be a network outage or a misconfiguration within the system infrastructure.\\n\\nOur team has already tried several troubleshooting methods, including rebooting affected devices and swapping hardware components, but unfortunately, these efforts did not resolve the disruptions.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Thank you for providing details about the connectivity problems affecting various devices. To assist you further, could you please specify whether the network outage affects both wired and wireless connections, and if any error messages are displayed on the devices? Also, kindly inform us of any recent modifications to your network configuration or infrastructure. If possible, please share relevant network logs or screenshots. We will prioritize your case and, if necessary, arrange a call at your convenience to accelerate the troubleshooting process.",
   "vip_tier": "standard",
-  "priority": "high",
+  "priority": "medium",
   "handle_time_minutes": 37.9,
   "churned_within_30d": true,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

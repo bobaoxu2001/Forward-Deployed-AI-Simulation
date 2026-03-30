@@ -1,0 +1,12 @@
+{
+  "case_id": "case-4d87ea84",
+  "ticket_text": "[CONTACT] I want assistance contacting someone",
+  "email_thread": [],
+  "conversation_snippet": "Customer: I want assistance contacting someone\nAgent: Thank you for contacting! I certainly recognize that you are seeking assistance in contacting someone. I'm here to help! Could you please provide more details about who you are trying to contact and the reason for your communication? With this information, I will be able to guide you to the most appropriate channel or provide you with the necessary contact details. Your satisfaction is our top priority, and we are committed to helping you connect with the right person efficiently. Take a moment to share the specific details, and we'll work together to find the best solution for you!",
+  "vip_tier": "unknown",
+  "priority": "low",
+  "handle_time_minutes": 68.3,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

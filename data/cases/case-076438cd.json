@@ -1,12 +1,12 @@
 {
   "case_id": "case-076438cd",
-  "ticket_text": "Battery on the provided router dies after 2 hours. Need replacement.",
+  "ticket_text": "[Network Connection Problems]\nDear Customer Support Team,\\n\\nI am reaching out to report persistent issues with network connectivity that are significantly disrupting my workflow. I've observed sporadic interruptions across several devices, which I believe may be caused by a malfunctioning repeater or potential interference from other devices within the network configuration.\\n\\nIn an attempt to resolve the problem, I have already taken several measures, such as restarting the affected equipment and repositioning the repeater to different locations within the premises. Despite these efforts, the connectivity issues persist.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Thank you for reaching out to us, <name>. We understand the importance of reliable and stable network connectivity. Currently, widespread problems with repeaters and interference in the environment are being reported. To assist you further, could you please specify which devices are impacted, provide details about your network setup, and mention any recent modifications? If possible, kindly share relevant error logs. We are prepared to guide you through advanced troubleshooting procedures.",
   "vip_tier": "unknown",
-  "priority": "critical",
+  "priority": "medium",
   "handle_time_minutes": 79.2,
   "churned_within_30d": false,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

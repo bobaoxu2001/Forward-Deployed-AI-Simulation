@@ -1,0 +1,12 @@
+{
+  "case_id": "case-07fdaad5",
+  "ticket_text": "[INVOICE] assistance downloading my invoice from {{Person Name}}",
+  "email_thread": [],
+  "conversation_snippet": "Customer: assistance downloading my invoice from {{Person Name}}\nAgent: I'll take care of it! I completely understand your need for assistance in downloading your invoice from {{Salutation}} {{Client First Name}} {{Client Last Name}}. Let me guide you through the process step by step. First, please log in to your account and navigate to the 'Invoices' section. From there, you should be able to view and download your invoice for your reference. If you encounter any issues or have further questions, please don't hesitate to let me know. I'm here to help ensure a smooth experience for you.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 78.7,
+  "churned_within_30d": true,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

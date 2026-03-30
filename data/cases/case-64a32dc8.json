@@ -1,0 +1,12 @@
+{
+  "case_id": "case-64a32dc8",
+  "ticket_text": "[ACCOUNT] deleting {{Account Category}} account",
+  "email_thread": [],
+  "conversation_snippet": "Customer: deleting {{Account Category}} account\nAgent: We've received your message to us regarding the deletion of your {{Account Category}} account. I'm here to assist you throughout the process and make sure your concerns are addressed. Could you please provide me with more information about the issues you are facing or any specific questions you have about deleting your account? By understanding your concerns fully, I'll be able to provide you with the most accurate and helpful guidance.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 28.5,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

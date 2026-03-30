@@ -1,12 +1,12 @@
 {
   "case_id": "case-8ba05714",
-  "ticket_text": "Your mobile app crashes every time I try to check my usage.",
+  "ticket_text": "[Issue with SaaS Platform Functionality]\nSehr geehrtes Support-Team,\\n\\nich möchte Sie auf einen Ausfall der Funktionen unserer SaaS-Plattform aufmerksam machen, den wir momentan erleben. In den letzten Stunden sind mehrere zentrale Features der Plattform langsamer geworden, was die Arbeitsabläufe erheblich beeinträchtigt und die Produktivität verringert.\\n\\nBesonders betroffen sind die Ladezeiten der Dashboards, es gibt Inkonsistenzen bei der Daten-Synchronisation sowie gelegentliche Fehler im Benutzer-Authentifizierungsprozess. Trotz Versuchen, die Anwendung neu zu starten und den Browser-Cache zu leeren, bestehen die Probleme weiterhin.\\n\\nDa die Plattform für unsere täglichen Geschäftsprozesse unverzichtbar ist, bitten wir um eine schnelle Bearbeitung dieses Anliegens. Könnten Sie uns bitte Unterstützung bieten?",
   "email_thread": [],
-  "conversation_snippet": "Our technician will visit your location within 24-48 hours.",
+  "conversation_snippet": "Vielen Dank für Ihre Kontaktaufnahme bezüglich der Probleme mit unserer SaaS-Plattform. Wir verstehen die Dringlichkeit, insbesondere bei den Funktionen der Dashboards, der Datensynchronisierung und der Benutzer-Authentifizierung, und entschuldigen uns für die entstandenen Unannehmlichkeiten. Unser technisches Team arbeitet derzeit an der Analyse der Situation, um die Ursache zu identifizieren und die normale Funktion so schnell wie möglich wiederherzustellen. Wir können momentan keinen genauen Zeitrahmen für die Lösung nennen, werden Sie jedoch umgehend informieren, sobald wir weitere Erkenntnisse haben. In der Zwischenzeit empfehlen wir, die Plattform vorübergehend nur bei dringendem Bedarf zu nutzen, um den Support zu gewährleisten.",
   "vip_tier": "vip",
   "priority": "medium",
   "handle_time_minutes": 49.7,
   "churned_within_30d": false,
-  "source_dataset": "support_tickets",
-  "language": "en"
+  "source_dataset": "support_tickets (real)",
+  "language": "de"
 }

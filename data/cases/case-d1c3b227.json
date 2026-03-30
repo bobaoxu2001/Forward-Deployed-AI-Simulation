@@ -1,0 +1,12 @@
+{
+  "case_id": "case-d1c3b227",
+  "ticket_text": "[DELIVERY] need to check how soon can i expect my product",
+  "email_thread": [],
+  "conversation_snippet": "Customer: need to check how soon can i expect my product\nAgent: For sure! I completely understand your need to have a clear idea of when your product will arrive. To provide you with accurate information, could you please provide me with the {{Tracking Number}} or {{Order Number}}? With that information, I'll be able to give you an estimate of the expected delivery date. Your patience is highly appreciated!",
+  "vip_tier": "standard",
+  "priority": "low",
+  "handle_time_minutes": 87.6,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

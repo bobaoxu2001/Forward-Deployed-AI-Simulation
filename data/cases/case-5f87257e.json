@@ -1,0 +1,12 @@
+{
+  "case_id": "case-5f87257e",
+  "ticket_text": "[FEEDBACK] I'm dissatisfied with ur work help me making a complaint",
+  "email_thread": [],
+  "conversation_snippet": "Customer: I'm dissatisfied with ur work help me making a complaint\nAgent: I'm truly sorry to hear that you're dissatisfied with our work. Your feedback is essential to us as we continuously strive to improve our services and meet your expectations. We value your concerns and would like to address them promptly and effectively. Could you please provide me with more details about your complaint? This will help us thoroughly investigate the matter and provide you with a satisfactory resolution.",
+  "vip_tier": "unknown",
+  "priority": "critical",
+  "handle_time_minutes": 77.9,
+  "churned_within_30d": true,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

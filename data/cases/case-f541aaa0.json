@@ -1,0 +1,12 @@
+{
+  "case_id": "case-f541aaa0",
+  "ticket_text": "[CANCEL] want help to see the termination charge",
+  "email_thread": [],
+  "conversation_snippet": "Customer: want help to see the termination charge\nAgent: I'll make it happen! I can provide you with assistance in viewing the termination charge. To do so, you can log in to your account and navigate to the section where your account details are displayed. Look for any information related to termination or cancellation fees, and you should find the details you're looking for. If you're unable to locate this information, please let me know and I'll be more than happy to help you further.",
+  "vip_tier": "standard",
+  "priority": "critical",
+  "handle_time_minutes": 68.8,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

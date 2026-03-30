@@ -1,12 +1,12 @@
 {
   "case_id": "case-fb45bc37",
-  "ticket_text": "I received a suspicious email claiming to be from your company asking for my password.",
+  "ticket_text": "[Request for Issue Explanation]\nDear Customer Support Team,\\n\\nI hope this message reaches you well. I am reaching out to request help with a problem I am experiencing. Unfortunately, I am not entirely sure how to clearly describe the issue, which makes it difficult to specify the exact nature of the problem.\\n\\nWhen I try to use the service, I observe unexpected behavior and cannot identify the precise cause. There are error messages and notifications, which make it challenging to provide a detailed description. I have attempted basic troubleshooting steps, such as restarting the application and checking for updates.",
   "email_thread": [],
-  "conversation_snippet": "Thank you for reaching out. We've escalated this to our technical team.",
+  "conversation_snippet": "Thank you for providing details about the issue. To assist you further, could you please describe the unexpected behavior you have observed while using the service? If possible, include the steps you took that led to the problem and attach relevant screenshots. Additionally, please inform us about your device type, operating system, and application version. This information will help us investigate and resolve the issue more efficiently.",
   "vip_tier": "standard",
-  "priority": "high",
+  "priority": "medium",
   "handle_time_minutes": 64.3,
   "churned_within_30d": true,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

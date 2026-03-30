@@ -1,12 +1,12 @@
 {
   "case_id": "case-ac7b0b06",
-  "ticket_text": "I was charged twice for my subscription this month. Please fix this immediately.",
+  "ticket_text": "[Wesentlicher Sicherheitsvorfall]\nSehr geehrtes Support-Team,\\n\\nich möchte einen gravierenden Sicherheitsvorfall melden, der gegenwärtig mehrere Komponenten unserer Infrastruktur betrifft. Betroffene Geräte umfassen Projektoren, Bildschirme und Speicherlösungen auf Cloud-Plattformen. Der Grund für die Annahme ist, dass der Vorfall eine potenzielle Datenverletzung im Zusammenhang mit einer Cyberattacke darstellt, was ein erhebliches Risiko für sensible Informationen und den laufenden Geschäftsbetrieb unserer Organisation bedeutet.\\n\\nUnsere initialen Untersuchungen haben ungewöhnliche Aktivitäten und Abweichungen bei den Geräten ergeben. Trotz der Umsetzung unserer standardisierten Behebungs- und Eindämmungsmaßnahmen konnte die Bedrohung bislang nicht vollständig eliminiert.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Vielen Dank für die Meldung des kritischen Sicherheitsvorfalls und die Bereitstellung der Übersicht über die betroffenen Geräte sowie der ergriffenen ersten Maßnahmen. Wir erkennen die Dringlichkeit und Schwere der Lage an und setzen alles daran, den Fall prioritär zu bearbeiten. Für eine umgehende Untersuchung benötigen wir zusätzliche Informationen: Bitte senden Sie uns spezifische Protokolle der betroffenen Projektoren, Bildschirme und Cloud-Speichersysteme, inklusive Zeitstempel verdächtiger Aktivitäten sowie ungewöhnlicher Fehlermeldungen. Falls möglich, fügen Sie auch eine Zusammenfassung der bereits durchgeführten Maßnahmen bei.",
   "vip_tier": "standard",
-  "priority": "low",
+  "priority": "high",
   "handle_time_minutes": 5.2,
-  "churned_within_30d": false,
-  "source_dataset": "support_tickets",
-  "language": "en"
+  "churned_within_30d": true,
+  "source_dataset": "support_tickets (real)",
+  "language": "de"
 }

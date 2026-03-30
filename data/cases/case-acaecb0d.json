@@ -1,0 +1,12 @@
+{
+  "case_id": "case-acaecb0d",
+  "ticket_text": "[ACCOUNT] i cant open an accojnt help me to notify of a sign-up issue",
+  "email_thread": [],
+  "conversation_snippet": "Customer: i cant open an accojnt help me to notify of a sign-up issue\nAgent: I'm glad you contacted us to us and expressing your difficulty in opening an account. We understand the frustration that arises from encountering sign-up issues. Rest assured, we are here to help you navigate through this process smoothly. To notify us of the sign-up issue you're facing, please provide us with more details regarding the problem. This will enable us to assist you promptly and find the best possible solution. We appreciate your patience, and we are committed to resolving the issue you're facing as quickly as possible.",
+  "vip_tier": "unknown",
+  "priority": "low",
+  "handle_time_minutes": 31.2,
+  "churned_within_30d": true,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

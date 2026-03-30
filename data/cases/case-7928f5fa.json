@@ -1,12 +1,12 @@
 {
   "case_id": "case-7928f5fa",
-  "ticket_text": "I want to upgrade my plan to premium. Can you help with that?",
+  "ticket_text": "[Anfrage nach detaillierten Angaben zur Systemarchitektur der Plattform]\nSehr geehrtes Kundensupport-Team,\\n\\nich hoffe, diese Nachricht trifft Sie wohl. Ich nehme Kontakt auf, um umfassende Informationen zur Architektur der Plattform zu erfragen. Das Verständnis der zugrunde liegenden Struktur, Komponenten und deren Zusammenhänge ist entscheidend, um eine reibungslose Integration zu gewährleisten und die Nutzung der Dienste zu optimieren.\\n\\nBesonders interessieren mich Details zu den Kernmodulen der Plattform, Datenströmen, Sicherheitsmaßnahmen, Skalierbarkeitsmerkmalen sowie verfügbaren APIs und Schnittstellen zur Anpassung. Zudem wären Einblicke in den Technologiestack sowie die Bereitstellungsumgebung sehr hilfreich.\\n\\nDer Zugriff auf diese Informationen ermöglicht es dem technischen Team, die Infrastrukturprozesse besser zu planen und zu steuern.",
   "email_thread": [],
-  "conversation_snippet": "We've updated your account as requested. Changes will take effect immediately.",
+  "conversation_snippet": "Vielen Dank für Ihre Anfrage. Wir stellen Ihnen die verfügbaren technischen Dokumentationen zur Verfügung. Falls notwendig, lassen Sie uns gern einen passenden Termin mit unseren Spezialisten vereinbaren.",
   "vip_tier": "standard",
-  "priority": "critical",
+  "priority": "low",
   "handle_time_minutes": 21.7,
   "churned_within_30d": false,
-  "source_dataset": "support_tickets",
-  "language": "en"
+  "source_dataset": "support_tickets (real)",
+  "language": "de"
 }

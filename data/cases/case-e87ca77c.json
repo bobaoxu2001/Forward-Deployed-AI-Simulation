@@ -1,12 +1,12 @@
 {
   "case_id": "case-e87ca77c",
-  "ticket_text": "Your automated system keeps disconnecting my calls before I can speak to anyone.",
+  "ticket_text": "[Query About Future Service Disruptions and Maintenance Timelines]\nDear Customer Support Team,\\n\\nI hope this message finds you well. I am reaching out to request detailed details regarding the schedule and scope of upcoming service disruptions and maintenance activities that could affect access to critical systems, particularly big data repositories, analytical models, and automated investment platforms. Understanding the timing and duration of these events is crucial for us to plan accordingly and minimize potential operational interruptions.\\n\\nCould you please provide a thorough overview of the planned maintenance?",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Thank you for reaching out about the upcoming service disruptions and maintenance schedules. The scheduled outages and maintenance windows in the near future are expected to impact big data lakes, analytical models, and automated investment platforms. Maintenance plans will include advance notifications with detailed information about the timing, affected components, expected downtime, and recommended preparations. For urgent issues during maintenance periods, you may contact our support hotline at <tel_num> to reach the designated support team.",
   "vip_tier": "standard",
-  "priority": "high",
+  "priority": "medium",
   "handle_time_minutes": 33.9,
   "churned_within_30d": false,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

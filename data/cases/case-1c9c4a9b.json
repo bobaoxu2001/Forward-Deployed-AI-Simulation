@@ -1,0 +1,12 @@
+{
+  "case_id": "case-1c9c4a9b",
+  "ticket_text": "[INVOICE] I do not know what I have to do to check my bill #12588",
+  "email_thread": [],
+  "conversation_snippet": "Customer: I do not know what I have to do to check my bill #12588\nAgent: I'm on the same page, your confusion about finding the invoice with the number #{{Invoice Number}}. Don't worry, I'm here to help! To check your bill, you can try the following steps:\n\n1. Log in to your account on our website or mobile app.\n2. Navigate to the \"Billing\" or \"Invoices\" section.\n3. Look for the option to view or download your invoices.\n4. Enter the invoice number {{Invoice Number}} in the search or filter bar, if available.\n5. If you can't find a specific search option, try sorting the invoices by date or contact our customer support team for further assistance.\n\nRemember, if you have any trouble locating your bill or need any further guidance, feel free to ask. We're here to make sure you can access and understand your invoice with ease.",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 71.9,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

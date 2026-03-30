@@ -1,12 +1,12 @@
 {
   "case_id": "case-6f37a2d1",
-  "ticket_text": "WiFi doesn't reach my home office. Signal is very weak upstairs.",
+  "ticket_text": "[Unable to Access Office Applications]\nDear Customer Support,\\n\\nWe are encountering a problem where employees are unable to open Excel, PowerPoint, and other Office programs on MacBook Air devices, despite having valid licenses. The issue started after a recent macOS update, which we suspect may have caused compatibility problems, possibly due to expired authentication tokens.\\n\\nTo attempt a fix, we rebooted the laptops, tried repairing Office, and re-entered Microsoft credentials. Regrettably, none of these actions resolved the issue, and the applications still cannot be accessed.\\n\\nWe would",
   "email_thread": [],
-  "conversation_snippet": "We understand your frustration. A credit has been applied to your account.",
+  "conversation_snippet": "Thank you for providing a detailed explanation of the issue. To assist you further, please specify any error messages encountered when launching Office applications. Also, verify whether your macOS version is up to date and confirm that the latest versions of Microsoft Office are installed. Since immediate access is critical, we can schedule a call at a convenient time to guide you through advanced troubleshooting steps. Please let us know your availability and any additional information.",
   "vip_tier": "unknown",
-  "priority": "low",
+  "priority": "high",
   "handle_time_minutes": 22.1,
   "churned_within_30d": false,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

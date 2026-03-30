@@ -1,0 +1,12 @@
+{
+  "case_id": "case-4af33b8b",
+  "ticket_text": "[SUBSCRIPTION] where can I sign up to the corporate newsletter?",
+  "email_thread": [],
+  "conversation_snippet": "Customer: where can I sign up to the corporate newsletter?\nAgent: We appreciate your interest in signing up for our corporate newsletter! To subscribe, you can visit our website and locate the newsletter subscription section. It's usually located on the homepage or in the footer menu. Once you find it, simply enter your email address and click the \"Subscribe\" or \"Sign Up\" button. This will ensure that you receive regular updates, exclusive offers, and valuable content directly in your inbox. Thank you for choosing to stay connected with us!",
+  "vip_tier": "unknown",
+  "priority": "critical",
+  "handle_time_minutes": 20.3,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

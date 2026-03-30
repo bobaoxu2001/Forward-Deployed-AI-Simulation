@@ -1,0 +1,12 @@
+{
+  "case_id": "case-c0e2500e",
+  "ticket_text": "[ACCOUNT] I want to change to the gold account, help me",
+  "email_thread": [],
+  "conversation_snippet": "Customer: I want to change to the gold account, help me\nAgent: I'll do my best! I'm thrilled to assist you with upgrading to the {{Account Type}} account:\n\n1. Log In: Start by logging into our platform using your credentials.\n2. Navigate to Account Settings: Once logged in, locate the '{{Settings}}' or '{{Profile}}' section of your account.\n3. Upgrade Option: Within this section, you will find an option labeled '{{Upgrade Account}}' or '{{Account Change}}'.\n4. Select {{Account Type}} Account: Choose the '{{Account Type}}' option from the available choices.\n5. Finalize the Switch: Follow the on-screen prompts and instructions to complete the switch to the {{Account Type}} account.\n\nFeel free to reach out if you encounter any challenges or have further questions. Your decision to upgrade is highly appreciated, and I'm here to ensure a seamless and enjoyable experience with the {{Account Type}} account. Enjoy the exclusive benefits that come with it!",
+  "vip_tier": "standard",
+  "priority": "medium",
+  "handle_time_minutes": 23.8,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

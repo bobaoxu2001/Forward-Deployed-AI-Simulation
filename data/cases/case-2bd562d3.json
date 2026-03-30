@@ -1,0 +1,12 @@
+{
+  "case_id": "case-2bd562d3",
+  "ticket_text": "[ORDER] question about cancelling order {{Order Number}}",
+  "email_thread": [],
+  "conversation_snippet": "Customer: question about cancelling order {{Order Number}}\nAgent: I've understood you have a question regarding canceling order {{Order Number}}, and I'm here to provide you with the information you need. Please go ahead and ask your question, and I'll do my best to assist you.",
+  "vip_tier": "vip",
+  "priority": "critical",
+  "handle_time_minutes": 15.4,
+  "churned_within_30d": true,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

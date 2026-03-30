@@ -1,12 +1,12 @@
 {
   "case_id": "case-4e9a11c7",
-  "ticket_text": "I can't log into my account. Password reset isn't working either.",
+  "ticket_text": "[System Interruptions]\nDear Customer Support Team,\\n\\nI am submitting a report regarding multiple system service disruptions that are currently interfering with project operations and client interactions. These interruptions have notably reduced efficiency and caused delays in meeting important deadlines.\\n\\nInitial assessments suggest that the primary issue may be linked to widespread failures in network hardware connectivity. We have already carried out several basic troubleshooting procedures, such as rebooting devices and performing initial system checks, but the problems persist.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Thank you for bringing the system disruptions to our attention. We understand the importance of maintaining stable services for project workflows and client communications, and we apologize for the inconvenience caused. To assist us in diagnosing the issue, could you please provide specific details about the affected systems or services, the approximate start time of the outages, and any error messages or logs you've encountered? Additionally, let us know if the outages are impacting users at a single location or across multiple sites.",
   "vip_tier": "standard",
-  "priority": "low",
+  "priority": "high",
   "handle_time_minutes": 73.4,
   "churned_within_30d": true,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

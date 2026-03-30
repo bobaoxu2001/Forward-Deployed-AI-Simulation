@@ -96,10 +96,11 @@ RULES:
 - evidence_quotes MUST contain exact phrases from the case text, not your own words
 - If you cannot find evidence for a field, set review_required to true
 - If the case text is ambiguous, set confidence below 0.7
+- If the case text is very short (under ~30 words), cap confidence at 0.7 — brief inputs lack context for high-certainty analysis
 - Do NOT hallucinate evidence — only quote text that actually appears above
 - Respond ONLY with the JSON object, no other text"""
 
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"
 
 
 def build_prompt(case: CaseBundle) -> str:

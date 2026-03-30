@@ -1,12 +1,12 @@
 {
   "case_id": "case-380fd7e4",
-  "ticket_text": "I cancelled my service last month but I'm still being billed. This is unacceptable.",
+  "ticket_text": "[Query About Smart Home System Integration Features]\nDear Customer Support Team,\\n\\nI hope this message reaches you well. I am reaching out to request detailed information about the capabilities of your smart home integration products listed on your website. As a potential customer aiming to develop a seamlessly interconnected home environment, it is essential to understand how your products interact with various smart home platforms.\\n\\nCould you kindly provide detailed compatibility information with popular smart home ecosystems such as Amazon Alexa, Google Assistant, and Apple?",
   "email_thread": [],
-  "conversation_snippet": "Thank you for reaching out. We've escalated this to our technical team.",
+  "conversation_snippet": "Thank you for your inquiry. Our products support integration with Amazon Alexa, Google Assistant, and Apple HomeKit. Compatibility details can differ depending on the specific item; please let us know which models you are interested in. The setup process is generally user-friendly but may require professional installation. We regularly update our software to provide enhanced features. For comprehensive information on compatibility with upcoming updates, please specify the models you are considering.",
   "vip_tier": "unknown",
   "priority": "medium",
   "handle_time_minutes": 10.6,
   "churned_within_30d": false,
-  "source_dataset": "support_tickets",
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

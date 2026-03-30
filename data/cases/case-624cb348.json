@@ -1,0 +1,12 @@
+{
+  "case_id": "case-624cb348",
+  "ticket_text": "[SHIPPING] can you help me correct my delivery address?",
+  "email_thread": [],
+  "conversation_snippet": "Customer: can you help me correct my delivery address?\nAgent: Sure! I'm here to assist you with correcting your delivery address. Please provide me with the necessary details, such as your current address and the correct address you would like to change it to, and I'll guide you through the process.",
+  "vip_tier": "vip",
+  "priority": "critical",
+  "handle_time_minutes": 34.5,
+  "churned_within_30d": false,
+  "source_dataset": "bitext_dialogues (real)",
+  "language": "en"
+}

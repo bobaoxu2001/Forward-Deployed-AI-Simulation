@@ -1,12 +1,12 @@
 {
   "case_id": "case-652870dc",
-  "ticket_text": "My internet has been down for 3 days. I work from home and this is critical.",
+  "ticket_text": "[Inquiry Regarding Invoice Details]\nDear Customer Support Team,\\n\\nI hope this message finds you well. I am reaching out to request clarification about the billing and payment procedures linked to my account. Recently, I observed some inconsistencies in the charges applied and would like to ensure I fully understand the billing cycle, accepted payment options, and any potential extra charges.\\n\\nFirstly, I would be grateful if you could provide a detailed explanation of how the billing cycle functions. Specifically, I am interested in knowing the start and end dates.\\n\\nThank you for your assistance regarding these billing inquiries.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "We appreciate you reaching out with your billing questions. The billing period generally begins on the first day of the month and concludes on the last day, with payments due by the 10th of the following month. We accept credit cards, bank transfers, and certain online payment services; credit card transactions are typically processed the quickest. Late payments may incur fees based on the due date, and any additional processing charges depend on the chosen payment method. You can review your statements for detailed payment information.",
   "vip_tier": "standard",
-  "priority": "critical",
+  "priority": "low",
   "handle_time_minutes": 11.2,
-  "churned_within_30d": true,
-  "source_dataset": "support_tickets",
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

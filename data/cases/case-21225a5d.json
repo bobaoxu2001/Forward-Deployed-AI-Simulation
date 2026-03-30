@@ -1,12 +1,12 @@
 {
   "case_id": "case-21225a5d",
-  "ticket_text": "The technician didn't show up for my scheduled appointment today.",
+  "ticket_text": "[Anfrage zur Klärung der Auswirkungen eines Serviceausfalls]\nSehr geehrtes Kundendienstteam,\\n\\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich schreibe, um eine Klärung bezüglich des kürzlichen Ausfalls Ihres Dienstes zu bitten, der die Plattform betroffen hat. Nutzer, die auf Ihre Dienste angewiesen sind, benötigen klare Informationen, um die betrieblichen Abläufe planen zu können, und es ist wichtig, den Umfang sowie die Folgen des Ausfalls genau zu verstehen.\\n\\nKönnten Sie bitte detaillierte Angaben zum Zeitraum des Ausfalls, welche Dienste betroffen waren und ob dabei Daten kompromittiert oder verloren gegangen sind, bereitstellen? Zudem würde ich mich über aktuelle Informationen zu den Maßnahmen freuen, die ergriffen wurden, um zukünftige Vorfälle zu verhindern.\\n\\nVielen Dank für Ihre Unterstützung und die Klärung der Details.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Vielen Dank, dass Sie uns bezüglich des kürzlichen Serviceausfalls kontaktiert haben. Der Ausfall begann um 9:00 Uhr morgens und wurde um 13:30 Uhr behoben, wodurch die Hauptdatenzugangs- und Messaging-Dienste betroffen waren. Wir bestätigen, dass im betreffenden Zeitraum keine Kundendaten kompromittiert oder verloren wurden. Unser technisches Team hat die Ursache, eine vorübergehende Systemüberlastung, bereits identifiziert und zusätzliche Schutzmaßnahmen sowie Überwachungsprozesse implementiert, um zukünftige Vorfälle zu verhindern. Für spezifische Informationen über das betroffene Konto bitten wir um weitere Details.",
   "vip_tier": "standard",
-  "priority": "critical",
+  "priority": "high",
   "handle_time_minutes": 11.1,
   "churned_within_30d": true,
-  "source_dataset": "support_tickets",
-  "language": "en"
+  "source_dataset": "support_tickets (real)",
+  "language": "de"
 }

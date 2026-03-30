@@ -1,12 +1,12 @@
 {
   "case_id": "case-bf7cc420",
-  "ticket_text": "The connection keeps dropping every 30 minutes. I've already restarted the router multiple times.",
+  "ticket_text": "[Question About Marketing Agency Software Compatibility]\nDear Support Team,\\n\\nI hope this message reaches you well. I am reaching out to ask about the compatibility of your products with the specific needs of marketing agencies. Our company is considering adopting these solutions to streamline our current marketing processes and wants to confirm that the products are fully compatible with the tools and platforms we currently utilize.\\n\\nCould you please supply detailed information regarding the compatibility of your products with popular marketing software, CRM systems, email marketing applications, and analytics platforms? Additionally, I would appreciate any relevant case studies or documentation tailored to our use case.",
   "email_thread": [],
-  "conversation_snippet": "We apologize for the inconvenience. Our team is looking into this issue.",
+  "conversation_snippet": "Thank you for your inquiry. Our product supports integration with major CRM, email marketing, and analytics platforms through APIs and customization options. Please specify the tools you are using so we can provide you with detailed documentation and relevant case studies.",
   "vip_tier": "unknown",
-  "priority": "critical",
+  "priority": "medium",
   "handle_time_minutes": 5.3,
-  "churned_within_30d": true,
-  "source_dataset": "support_tickets",
+  "churned_within_30d": false,
+  "source_dataset": "support_tickets (real)",
   "language": "en"
 }

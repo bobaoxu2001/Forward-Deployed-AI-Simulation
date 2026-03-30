@@ -1,8 +1,25 @@
 """Build 20-40 case bundles from raw datasets.
 
 Each case bundle = one customer/incident/problem chain.
-Metadata fields (vip_tier, handle_time, churned) are synthetically augmented
-where real labels are unavailable. Synthetic logic is explicit and deterministic.
+
+Field provenance (real vs synthetic):
+  REAL from Tobi-Bueck/customer-support-tickets:
+    - ticket_text (from body)
+    - email_thread (from answer)
+    - priority (from priority field)
+    - language (from language field)
+    - source_dataset tags: tag_1..tag_8, queue, type
+
+  REAL from Bitext dataset:
+    - conversation_snippet (from instruction + response)
+    - ticket_text (constructed from category + instruction)
+
+  SYNTHETIC (always):
+    - vip_tier — no real VIP labels available
+    - handle_time_minutes — no real handle times available
+    - churned_within_30d — no real churn labels available
+
+Synthetic logic is deterministic (seed=42) and explicitly documented.
 """
 import json
 import random
@@ -19,30 +36,33 @@ CASES_DIR = Path("data/cases")
 # Deterministic seed for reproducibility
 random.seed(42)
 
-# --- Synthetic augmentation rules ---
-# These fill in metadata that real datasets don't provide.
-# Every synthetic field is documented here.
+
+# ---------------------------------------------------------------------------
+# Synthetic augmentation (only for fields that have no real source)
+# ---------------------------------------------------------------------------
 
 VIP_TIERS = ["standard", "standard", "standard", "vip", "unknown"]
 PRIORITIES = ["low", "medium", "medium", "high", "critical"]
 
 
 def _synthetic_vip_tier() -> str:
+    """SYNTHETIC: No real VIP labels in source data."""
     return random.choice(VIP_TIERS)
 
 
 def _synthetic_priority() -> str:
+    """SYNTHETIC: Used only when real priority is missing."""
     return random.choice(PRIORITIES)
 
 
 def _synthetic_handle_time() -> float:
-    """Random handle time in minutes. VIP-like cases skew higher."""
+    """SYNTHETIC: No real handle times in source data."""
     return round(random.uniform(3.0, 90.0), 1)
 
 
 def _synthetic_churn(priority: str, vip_tier: str) -> bool:
-    """Churn probability increases with priority and VIP tier.
-    This is a simple heuristic, not a model.
+    """SYNTHETIC: No real churn labels in source data.
+    Churn probability increases with priority and VIP tier.
     """
     base = 0.1
     if priority in ("high", "critical"):
@@ -58,10 +78,16 @@ def _make_case_id(source: str, index: int) -> str:
     return f"case-{hashlib.md5(raw.encode()).hexdigest()[:8]}"
 
 
-# --- Build from support tickets ---
+# ---------------------------------------------------------------------------
+# Build from support tickets (Dataset 1)
+# ---------------------------------------------------------------------------
 
 def build_from_tickets(max_cases: int = 25) -> list[CaseBundle]:
-    """Build case bundles from support ticket JSONL."""
+    """Build case bundles from support ticket JSONL.
+
+    Real fields used: body, answer, priority, language, queue, type, tag_1..tag_8
+    Synthetic fields: vip_tier, handle_time_minutes, churned_within_30d
+    """
     tickets_path = RAW_DIR / "support_tickets.jsonl"
     if not tickets_path.exists():
         print(f"Warning: {tickets_path} not found. Run scripts/ingest_data.py first.")
@@ -73,48 +99,137 @@ def build_from_tickets(max_cases: int = 25) -> list[CaseBundle]:
             if i >= max_cases:
                 break
             row = json.loads(line)
+            is_synthetic = row.get("_synthetic", False)
 
-            # Map ticket fields to case bundle
+            # --- REAL fields ---
             ticket_text = row.get("body") or row.get("subject") or ""
             if not ticket_text.strip():
                 continue
 
-            priority = (row.get("priority") or "unknown").lower()
-            if priority not in ("low", "medium", "high", "critical", "unknown"):
-                priority = "unknown"
+            # Use real priority if valid, otherwise synthesize
+            priority = (row.get("priority") or "").lower().strip()
+            if priority not in ("low", "medium", "high", "critical"):
+                priority = _synthetic_priority()
 
+            # Use real language from dataset
+            language = (row.get("language") or "").lower().strip()
+            if not language:
+                language = detect_language(ticket_text)
+
+            # Use agent answer as conversation context (real)
+            answer = row.get("answer", "")
+
+            # Collect real tags for auditability
+            real_tags = []
+            for tag_key in ["queue", "type"] + [f"tag_{j}" for j in range(1, 9)]:
+                val = row.get(tag_key)
+                if val and str(val).strip():
+                    real_tags.append(f"{tag_key}={val}")
+
+            # Build subject line for richer ticket text
+            subject = row.get("subject", "")
+            if subject and subject not in ticket_text:
+                ticket_text = f"[{subject}]\n{ticket_text}"
+
+            # --- SYNTHETIC fields (explicitly marked) ---
             vip_tier = _synthetic_vip_tier()
             handle_time = _synthetic_handle_time()
+            churned = _synthetic_churn(priority, vip_tier)
 
             case = CaseBundle(
                 case_id=_make_case_id("ticket", i),
                 ticket_text=ticket_text,
-                conversation_snippet=row.get("answer", ""),
+                conversation_snippet=answer,
                 email_thread=[],
                 vip_tier=vip_tier,
                 priority=priority,
                 handle_time_minutes=handle_time,
-                churned_within_30d=_synthetic_churn(priority, vip_tier),
-                source_dataset="support_tickets",
-                language=detect_language(ticket_text),
+                churned_within_30d=churned,
+                source_dataset="support_tickets" + (" (synthetic)" if is_synthetic else " (real)"),
+                language=language,
             )
             cases.append(normalize_case(case))
 
-    print(f"Built {len(cases)} cases from support tickets")
+    real_count = sum(1 for c in cases if "(real)" in c.source_dataset)
+    synth_count = sum(1 for c in cases if "(synthetic)" in c.source_dataset)
+    print(f"Built {len(cases)} cases from support tickets ({real_count} real, {synth_count} synthetic)")
     return cases
 
 
-# --- Build from SAMSum conversations ---
+# ---------------------------------------------------------------------------
+# Build from Bitext dialogues (Dataset 2)
+# ---------------------------------------------------------------------------
 
-def build_from_samsum(max_cases: int = 15) -> list[CaseBundle]:
-    """Build case bundles from SAMSum conversations.
+def build_from_bitext(max_cases: int = 15) -> list[CaseBundle]:
+    """Build case bundles from Bitext dialogue JSONL.
 
-    SAMSum dialogues are repurposed as conversation snippets
-    attached to synthetic ticket text.
+    Real fields used: instruction, response, category, intent
+    Synthetic fields: vip_tier, handle_time_minutes, churned_within_30d, priority
     """
+    bitext_path = RAW_DIR / "bitext_dialogues.jsonl"
+    if not bitext_path.exists():
+        print(f"Info: {bitext_path} not found. Trying legacy samsum_conversations.jsonl...")
+        return _build_from_samsum_legacy(max_cases)
+
+    cases = []
+    with open(bitext_path, encoding="utf-8") as f:
+        for i, line in enumerate(f):
+            if i >= max_cases:
+                break
+            row = json.loads(line)
+            is_synthetic = row.get("_synthetic", False)
+
+            # --- REAL fields ---
+            instruction = row.get("instruction", "")
+            response = row.get("response", "")
+            category = row.get("category", "").lower()
+            intent = row.get("intent", "")
+
+            if not instruction.strip():
+                continue
+
+            # Build ticket text from real category + instruction
+            ticket_text = f"[{category.upper()}] {instruction}"
+
+            # Build conversation from instruction/response pair
+            conversation = f"Customer: {instruction}\nAgent: {response}"
+
+            # Map category to priority heuristic
+            high_priority_categories = {"refund", "cancellation_fee", "complaint"}
+            priority = _synthetic_priority()
+            if any(kw in intent.lower() for kw in ["complain", "refund", "cancel"]):
+                priority = random.choice(["high", "critical"])
+
+            # --- SYNTHETIC fields ---
+            vip_tier = _synthetic_vip_tier()
+            handle_time = _synthetic_handle_time()
+            churned = _synthetic_churn(priority, vip_tier)
+
+            case = CaseBundle(
+                case_id=_make_case_id("bitext", i),
+                ticket_text=ticket_text,
+                conversation_snippet=conversation,
+                email_thread=[],
+                vip_tier=vip_tier,
+                priority=priority,
+                handle_time_minutes=handle_time,
+                churned_within_30d=churned,
+                source_dataset="bitext_dialogues" + (" (synthetic)" if is_synthetic else " (real)"),
+                language="en",
+            )
+            cases.append(normalize_case(case))
+
+    real_count = sum(1 for c in cases if "(real)" in c.source_dataset)
+    synth_count = sum(1 for c in cases if "(synthetic)" in c.source_dataset)
+    print(f"Built {len(cases)} cases from Bitext dialogues ({real_count} real, {synth_count} synthetic)")
+    return cases
+
+
+def _build_from_samsum_legacy(max_cases: int = 15) -> list[CaseBundle]:
+    """Fallback: build from legacy samsum_conversations.jsonl if bitext is unavailable."""
     samsum_path = RAW_DIR / "samsum_conversations.jsonl"
     if not samsum_path.exists():
-        print(f"Warning: {samsum_path} not found. Run scripts/ingest_data.py first.")
+        print(f"Warning: No dialogue data found. Run scripts/ingest_data.py first.")
         return []
 
     cases = []
@@ -129,8 +244,6 @@ def build_from_samsum(max_cases: int = 15) -> list[CaseBundle]:
             if not dialogue.strip():
                 continue
 
-            # Use the dialogue as conversation_snippet,
-            # and the summary as a synthetic ticket text
             vip_tier = _synthetic_vip_tier()
             priority = _synthetic_priority()
             handle_time = _synthetic_handle_time()
@@ -144,16 +257,18 @@ def build_from_samsum(max_cases: int = 15) -> list[CaseBundle]:
                 priority=priority,
                 handle_time_minutes=handle_time,
                 churned_within_30d=_synthetic_churn(priority, vip_tier),
-                source_dataset="samsum",
+                source_dataset="samsum (synthetic)",
                 language="en",
             )
             cases.append(normalize_case(case))
 
-    print(f"Built {len(cases)} cases from SAMSum")
+    print(f"Built {len(cases)} cases from SAMSum (legacy, all synthetic)")
     return cases
 
 
-# --- Main builder ---
+# ---------------------------------------------------------------------------
+# Main builder
+# ---------------------------------------------------------------------------
 
 def build_all_cases() -> list[CaseBundle]:
     """Build all case bundles and save to data/cases/."""
@@ -165,7 +280,7 @@ def build_all_cases() -> list[CaseBundle]:
 
     all_cases = []
     all_cases.extend(build_from_tickets(max_cases=25))
-    all_cases.extend(build_from_samsum(max_cases=15))
+    all_cases.extend(build_from_bitext(max_cases=15))
 
     if not all_cases:
         print("ERROR: No cases built. Ensure raw data exists in data/raw/.")
@@ -175,7 +290,12 @@ def build_all_cases() -> list[CaseBundle]:
     for case in all_cases:
         save_case_bundle(case, CASES_DIR)
 
+    # Summary
+    real_count = sum(1 for c in all_cases if "(real)" in c.source_dataset)
+    synth_count = sum(1 for c in all_cases if "(synthetic)" in c.source_dataset)
     print(f"\nTotal: {len(all_cases)} case bundles saved to {CASES_DIR}/")
+    print(f"  Real source data:      {real_count}")
+    print(f"  Synthetic fallback:    {synth_count}")
     return all_cases
 
 
