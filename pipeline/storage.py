@@ -221,6 +221,22 @@ def write_trace_jsonl(
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
+# --- Deserialization helpers ---
+
+JSON_LIST_FIELDS = ("next_best_actions", "evidence_quotes", "gate_reasons", "review_reason_codes")
+
+
+def deserialize_extraction(row: dict) -> dict:
+    """Deserialize JSON-encoded list fields in an extraction row from SQLite."""
+    for key in JSON_LIST_FIELDS:
+        if key in row and isinstance(row[key], str):
+            try:
+                row[key] = json.loads(row[key])
+            except (json.JSONDecodeError, TypeError):
+                row[key] = []
+    return row
+
+
 # --- Query helpers ---
 
 def get_all_extractions(db_path: Path | None = None) -> list[dict]:

@@ -22,8 +22,8 @@ def test_extract_with_mock_returns_extraction_output():
     case = _sample_case()
     output, meta = extract_case(case, provider=MockProvider())
     assert isinstance(output, ExtractionOutput)
-    assert output.root_cause_l1 == "billing"
-    assert output.confidence == 0.85
+    assert output.root_cause_l1 == "billing"  # case text mentions "charged"
+    assert 0.0 < output.confidence <= 1.0
     assert len(output.evidence_quotes) > 0
 
 

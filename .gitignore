@@ -3,10 +3,8 @@ __pycache__/
 .env
 data/raw/*
 !data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
-*.db
-*.sqlite
+data/processed/*.db-journal
 .DS_Store
 .venv/
 venv/
+.claude/

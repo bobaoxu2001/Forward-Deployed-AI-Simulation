@@ -49,25 +49,109 @@ class ClaudeProvider:
 # --- Mock provider for testing ---
 
 class MockProvider:
-    """Returns a fixed extraction for testing without API calls."""
+    """Returns diverse, case-aware extractions for demo without API calls.
+
+    When no explicit response is provided, the mock analyzes keyword signals
+    in the prompt to produce varied, realistic-looking outputs. This ensures
+    the dashboard shows meaningful distributions rather than identical rows.
+    """
+
+    # Keyword → (root_cause_l1, root_cause_l2, risk_level, base_confidence) mapping
+    _SIGNAL_MAP = [
+        (["security", "breach", "sicherheit", "cyberattack", "unauthorized"],
+         "security_breach", "unauthorized_access", "critical", 0.80),
+        (["outage", "offline", "down", "unavailable", "ausfall"],
+         "outage", "service_unavailable", "high", 0.78),
+        (["network", "connectivity", "vpn", "router", "wifi", "dns"],
+         "network", "connectivity_failure", "medium", 0.82),
+        (["billing", "charge", "invoice", "payment", "overcharge", "refund"],
+         "billing", "incorrect_charge", "low", 0.88),
+        (["account", "login", "password", "signup", "sign-up", "locked"],
+         "account", "access_issue", "medium", 0.75),
+        (["cancel", "termination", "terminate", "close account"],
+         "service", "cancellation_request", "high", 0.72),
+        (["upgrade", "feature", "enhancement", "improve", "request"],
+         "product", "feature_request", "low", 0.90),
+        (["slow", "performance", "latency", "timeout", "lag"],
+         "network", "performance_degradation", "medium", 0.80),
+        (["data", "loss", "missing", "deleted", "corruption"],
+         "data_loss", "data_corruption", "critical", 0.70),
+        (["complaint", "dissatisfied", "frustrated", "angry", "worst"],
+         "service", "customer_dissatisfaction", "high", 0.76),
+    ]
+
+    _FALLBACK = ("service", "general_inquiry", "medium", 0.82)
 
     def __init__(self, response: dict | None = None):
-        self.response = response or {
-            "root_cause_l1": "billing",
-            "root_cause_l2": "overcharge",
-            "sentiment_score": -0.5,
-            "risk_level": "medium",
-            "review_required": False,
-            "next_best_actions": ["Issue credit", "Follow up in 48h"],
-            "evidence_quotes": ["I was charged twice for the same service"],
-            "confidence": 0.85,
-            "churn_risk": 0.3,
-            "sentiment_rationale": "Customer frustrated about billing error",
-            "draft_notes": "Customer reports duplicate charge. Verify and issue credit.",
-        }
+        self.response = response
+
+    def _classify_prompt(self, prompt: str) -> tuple[str, str, str, float]:
+        """Match keywords in the CASE DATA section only (not the prompt template)."""
+        import re
+        # Extract only the case data block between "CASE DATA:" and "You MUST respond"
+        match = re.search(r"CASE DATA:\s*(.*?)(?:You MUST respond)", prompt, re.DOTALL)
+        case_text = match.group(1).lower() if match else prompt.lower()
+        for keywords, l1, l2, risk, conf in self._SIGNAL_MAP:
+            if any(kw in case_text for kw in keywords):
+                return l1, l2, risk, conf
+        return self._FALLBACK
+
+    def _extract_evidence(self, prompt: str) -> list[str]:
+        """Extract short phrases from the prompt as mock evidence quotes."""
+        # Find the case text between "Ticket:" and "Metadata:"
+        import re
+        match = re.search(r"Ticket:\s*(.*?)(?:\nConversation:|\nEmail thread:|\nMetadata:)", prompt, re.DOTALL)
+        text = match.group(1).strip() if match else ""
+        if not text:
+            return ["support case reported by customer"]
+
+        # Split into sentences, take up to 3
+        sentences = re.split(r'[.!?\n]+', text)
+        quotes = []
+        for s in sentences:
+            s = s.strip()
+            if 15 < len(s) < 200:
+                quotes.append(s)
+            if len(quotes) >= 3:
+                break
+        return quotes or [text[:100]]
 
     def extract(self, prompt: str) -> str:
-        return json.dumps(self.response)
+        if self.response is not None:
+            return json.dumps(self.response)
+
+        l1, l2, risk, confidence = self._classify_prompt(prompt)
+        evidence = self._extract_evidence(prompt)
+        word_count = len(prompt.split())
+
+        # Short-input confidence cap (mirrors v2 prompt rule)
+        if word_count < 80:
+            confidence = min(confidence, 0.70)
+
+        # Determine review flag and sentiment from risk
+        review_required = risk in ("high", "critical") or confidence < 0.7
+        sentiment_map = {"critical": -0.8, "high": -0.6, "medium": -0.3, "low": 0.1}
+        sentiment = sentiment_map.get(risk, -0.3)
+        churn_risk = {"critical": 0.85, "high": 0.65, "medium": 0.35, "low": 0.15}.get(risk, 0.3)
+
+        result = {
+            "root_cause_l1": l1,
+            "root_cause_l2": l2,
+            "sentiment_score": sentiment,
+            "risk_level": risk,
+            "review_required": review_required,
+            "next_best_actions": [
+                f"Investigate {l2.replace('_', ' ')} issue",
+                f"Escalate to {l1} team for resolution",
+            ],
+            "evidence_quotes": evidence,
+            "confidence": confidence,
+            "churn_risk": churn_risk,
+            "sentiment_rationale": f"Customer reported {l2.replace('_', ' ')} — {risk} severity",
+            "draft_notes": f"Case classified as {l1}/{l2}. Risk: {risk}. "
+                           f"{'Requires human review.' if review_required else 'Safe for auto-routing.'}",
+        }
+        return json.dumps(result)
 
 
 # --- Prompt construction ---

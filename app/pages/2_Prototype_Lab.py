@@ -15,6 +15,7 @@ from pipeline.normalize import normalize_case
 from pipeline.extract import extract_case, MockProvider, ClaudeProvider
 from pipeline.validate import validate_extraction, check_evidence_present
 from pipeline.gate import compute_gate_decision
+from pipeline.storage import deserialize_extraction
 
 st.set_page_config(page_title="Prototype Lab", layout="wide")
 st.title("Prototype Lab")
@@ -45,15 +46,7 @@ def _load_stored_extraction(case_id: str) -> dict | None:
     conn.close()
     if row is None:
         return None
-    d = dict(row)
-    # Deserialize JSON-encoded list fields
-    for key in ("next_best_actions", "evidence_quotes", "gate_reasons", "review_reason_codes"):
-        if key in d and isinstance(d[key], str):
-            try:
-                d[key] = json.loads(d[key])
-            except (json.JSONDecodeError, TypeError):
-                pass
-    return d
+    return deserialize_extraction(dict(row))
 
 
 def _load_trace_metadata(case_id: str) -> dict | None:
@@ -318,6 +311,8 @@ if ext_dict is not None:
 
     quotes = ext_dict.get("evidence_quotes", [])
     source_text = case.ticket_text + " " + case.conversation_snippet
+    if case.email_thread:
+        source_text += " " + " ".join(case.email_thread)
 
     if not quotes:
         st.warning("No evidence quotes provided.")
