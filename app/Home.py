@@ -57,7 +57,7 @@ with col1:
 
 with col2:
     st.subheader("Start here")
-    st.page_link("app/pages/0_Engagement_Narrative.py", label="Engagement Narrative — the full story", icon="🎯")
+    st.page_link("pages/0_Engagement_Narrative.py", label="Engagement Narrative — the full story", icon="🎯")
     st.caption("Then explore the system:")
     st.markdown("""
 1. **Problem Scoping** — AI suitability matrix, success criteria

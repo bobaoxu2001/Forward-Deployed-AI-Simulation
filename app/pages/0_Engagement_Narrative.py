@@ -16,15 +16,15 @@ st.set_page_config(page_title="Engagement Narrative", layout="wide")
 
 # Page references for st.page_link
 PAGES = {
-    "problem_scoping": "app/pages/1_Problem_Scoping.py",
-    "prototype_lab": "app/pages/2_Prototype_Lab.py",
-    "reliability_review": "app/pages/3_Reliability_Review.py",
-    "abstraction_layer": "app/pages/4_Abstraction_Layer.py",
-    "executive_summary": "app/pages/5_Executive_Summary.py",
-    "roi_model": "app/pages/6_ROI_Model.py",
-    "data_quality": "app/pages/7_Data_Quality.py",
-    "human_feedback": "app/pages/8_Human_Feedback.py",
-    "prompt_ab": "app/pages/9_Prompt_AB_Testing.py",
+    "problem_scoping": "pages/1_Problem_Scoping.py",
+    "prototype_lab": "pages/2_Prototype_Lab.py",
+    "reliability_review": "pages/3_Reliability_Review.py",
+    "abstraction_layer": "pages/4_Abstraction_Layer.py",
+    "executive_summary": "pages/5_Executive_Summary.py",
+    "roi_model": "pages/6_ROI_Model.py",
+    "data_quality": "pages/7_Data_Quality.py",
+    "human_feedback": "pages/8_Human_Feedback.py",
+    "prompt_ab": "pages/9_Prompt_AB_Testing.py",
 }
 
 st.title("Engagement Narrative")
