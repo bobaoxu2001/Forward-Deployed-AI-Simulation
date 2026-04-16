@@ -81,6 +81,8 @@ def test_store_and_retrieve_extraction():
     assert results[0]["case_id"] == "st-002"
     assert results[0]["root_cause_l1"] == "network"
     assert results[0]["gate_route"] == "review"
+    assert results[0]["next_best_actions"] == ["Dispatch tech"]
+    assert results[0]["review_reason_codes"] == ["high_risk_level"]
 
 
 def test_review_queue_filters():
@@ -102,6 +104,7 @@ def test_review_queue_filters():
     queue = get_review_queue(db)
     assert len(queue) == 1
     assert queue[0]["case_id"] == "review-1"
+    assert queue[0]["review_reason_codes"] == ["high_risk_level"]
 
 
 def test_trace_log_storage():
@@ -127,3 +130,5 @@ def test_trace_log_storage():
     assert logs[0]["case_id"] == "tr-001"
     assert logs[0]["model_name"] == "claude-test"
     assert logs[0]["latency_ms"] == 150.5
+    assert logs[0]["validation_errors"] == []
+    assert logs[0]["review_reason_codes"] == []

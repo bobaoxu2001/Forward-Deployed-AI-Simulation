@@ -224,11 +224,23 @@ def write_trace_jsonl(
 # --- Deserialization helpers ---
 
 JSON_LIST_FIELDS = ("next_best_actions", "evidence_quotes", "gate_reasons", "review_reason_codes")
+TRACE_JSON_FIELDS = ("validation_errors", "review_reason_codes")
 
 
 def deserialize_extraction(row: dict) -> dict:
     """Deserialize JSON-encoded list fields in an extraction row from SQLite."""
     for key in JSON_LIST_FIELDS:
+        if key in row and isinstance(row[key], str):
+            try:
+                row[key] = json.loads(row[key])
+            except (json.JSONDecodeError, TypeError):
+                row[key] = []
+    return row
+
+
+def deserialize_trace_log(row: dict) -> dict:
+    """Deserialize JSON-encoded list fields in a trace log row from SQLite."""
+    for key in TRACE_JSON_FIELDS:
         if key in row and isinstance(row[key], str):
             try:
                 row[key] = json.loads(row[key])
@@ -244,7 +256,7 @@ def get_all_extractions(db_path: Path | None = None) -> list[dict]:
     conn = _get_connection(db_path)
     try:
         rows = conn.execute("SELECT * FROM extractions").fetchall()
-        return [dict(row) for row in rows]
+        return [deserialize_extraction(dict(row)) for row in rows]
     finally:
         conn.close()
 
@@ -256,7 +268,7 @@ def get_review_queue(db_path: Path | None = None) -> list[dict]:
         rows = conn.execute(
             "SELECT * FROM extractions WHERE gate_route = 'review'"
         ).fetchall()
-        return [dict(row) for row in rows]
+        return [deserialize_extraction(dict(row)) for row in rows]
     finally:
         conn.close()
 
@@ -268,6 +280,6 @@ def get_trace_logs(db_path: Path | None = None) -> list[dict]:
         rows = conn.execute(
             "SELECT * FROM trace_logs ORDER BY timestamp DESC"
         ).fetchall()
-        return [dict(row) for row in rows]
+        return [deserialize_trace_log(dict(row)) for row in rows]
     finally:
         conn.close()
